@@ -1,0 +1,29 @@
+#DİKKAT burada değerler(Values) anahtarlardan ayrı yazılır.
+# (iki noktadan) : sonra mutlaka boşluk olmalıdır.
+# alt bileşenler bir tab içte tanımlanır.
+# Doğrusu:
+#  server:
+#    port: 80
+# Yanlış olan:
+# server:
+# port: 80
+#
+
+server:
+  port: 80
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/Java5Test
+    username: postgres
+    password: 4628
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true;
+
+
