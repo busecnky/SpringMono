@@ -1,6 +1,7 @@
 package com.busecnky.SpringMono.dto.request;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -16,6 +17,7 @@ public class UrunSaveRequestDto {
     String fiyat;
     String kdv;
     String barkod;
+    MultipartFile profileimg;
 
 
 }

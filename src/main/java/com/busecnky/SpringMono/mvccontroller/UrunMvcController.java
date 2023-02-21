@@ -1,6 +1,7 @@
 package com.busecnky.SpringMono.mvccontroller;
 
 import com.busecnky.SpringMono.dto.request.UrunSaveRequestDto;
+import com.busecnky.SpringMono.dto.request.UrunUpdateRequestDto;
 import com.busecnky.SpringMono.mvccontroller.models.UrunIndexModel;
 import com.busecnky.SpringMono.service.UrunService;
 import lombok.RequiredArgsConstructor;
@@ -33,10 +34,20 @@ public class UrunMvcController {
     }
     @PostMapping (SAVE)
     public ModelAndView save(UrunSaveRequestDto dto){
+        /**
+         * NOT!!!
+         * sunucuya iletilen dosyalar sunucunun kendisinde tutulabilir. Tüm
+         * resim ve dosyaarl static klasöründe kulanılabilir ve ulaşılabilir.
+         * Çok tavsiye edilen bir yöntem değildir. Bunun yerine
+         * bulut sistemlerde yada kendi fileserver sisteminizde bu dosyaları
+         * barındırmanız önerilir.
+         */
+        //Files.copy(dto.getProfileimg().getInputStream(), Path.of("d:\\resim.jpg"));
         urunService.save(dto);
         return new ModelAndView("redirect:index");
     }
 
+    @PostMapping (DELETE)
     public ModelAndView delete(Long id){
         System.out.println("Silme işlemi çalıştı silinen id : "+ id);
         try{
@@ -48,6 +59,12 @@ public class UrunMvcController {
         }
 
 
+        return new ModelAndView("redirect:index");
+    }
+
+    @PostMapping (UPDATE)
+    public ModelAndView update(UrunUpdateRequestDto dto){
+        urunService.update(dto);
         return new ModelAndView("redirect:index");
     }
 }

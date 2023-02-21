@@ -1,6 +1,7 @@
 package com.busecnky.SpringMono.service;
 
 import com.busecnky.SpringMono.dto.request.UrunSaveRequestDto;
+import com.busecnky.SpringMono.dto.request.UrunUpdateRequestDto;
 import com.busecnky.SpringMono.mapper.IUrunMapper;
 import com.busecnky.SpringMono.repository.IUrunRepository;
 import com.busecnky.SpringMono.repository.entity.Urun;
@@ -8,7 +9,6 @@ import com.busecnky.SpringMono.utility.ServiceManager;
 import org.springframework.stereotype.Service;
 
 @Service
-
 public class UrunService extends ServiceManager<Urun,Long> {
 
     public UrunService(IUrunRepository repository){
@@ -17,7 +17,10 @@ public class UrunService extends ServiceManager<Urun,Long> {
 
     public void save(UrunSaveRequestDto dto){
         save(IUrunMapper.INSTANCE.urunFromDto(dto));
+    }
 
+    public void update(UrunUpdateRequestDto dto){
+        update(IUrunMapper.INSTANCE.urunFromUpdateDto(dto));
     }
 
 }
